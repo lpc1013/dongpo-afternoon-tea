@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>音效自检 · 东坡行旅</title>
+<!-- 双击即跑。file:// 下只走 <audio src> 读本地文件，不用 fetch。
+     这一页只负责一件事：让你用耳朵否决我机器挑的那一声。
+     台账（出处／授权）来自 行旅数据.js 的 SFX 表，与 tools/inventory.js 同一份真源。 -->
+<style>
+  body { margin:0; padding:26px 30px 60px; background:#12100f; color:#efe6d5;
+         font:15px/1.6 "Microsoft YaHei","PingFang SC",sans-serif; }
+  h1 { font-size:22px; font-weight:400; letter-spacing:3px; margin:0 0 4px; }
+  .sum { color:#a89a88; font-size:13px; margin-bottom:18px; }
+  .sum b { color:#d8b26a; font-weight:400; }
+  .row { display:flex; gap:14px; align-items:flex-start; padding:11px 0;
+         border-bottom:1px solid #241f1b; }
+  .id { width:112px; color:#d8b26a; flex:0 0 auto; }
+  .use { flex:1 1 auto; min-width:0; }
+  .use i { font-style:normal; color:#a89a88; font-size:12.5px; display:block; }
+  .lic { font-size:11.5px; color:#7f8f7f; word-break:break-all; }
+  .lic a { color:#7f8f7f; }
+  .warn { color:#c87a5a; }
+  .go { flex:0 0 auto; width:60px; text-align:center; cursor:pointer; user-select:none;
+        border:1px solid #4a3a2c; border-radius:2px; padding:6px 0; color:#efe6d5; }
+  .go:hover { background:#241f1b; }
+  .miss .go { color:#5a4e44; border-color:#2b2521; cursor:default; }
+  .d { width:96px; flex:0 0 auto; color:#a89a88; font-size:12.5px; }
+  .tag { font-size:11px; padding:1px 5px; border:1px solid #4a3a2c; margin-right:6px; }
+  .ok { color:#96c896; border-color:#3f6b3f; }
+  .no { color:#e2a08c; border-color:#8c2820; }
+</style>
+</head>
+<body>
+<h1>音效自检</h1>
+<div class="sum" id="sum"></div>
+<div id="list"></div>
+<div class="sum" style="margin-top:22px">
+  听感不对就在群里报 id（比如「water 换掉」）—— 我把 <code>warn</code> 那几条优先重抽。<br>
+  缺的五条我是**故意留空**的：宁可不出声，也不拿「大锤砸混凝土」当惊堂木。
+</div>
+<h1 style="margin-top:34px">配乐试听</h1>
+<div class="sum" id="musum"></div>
+<div id="mulist"></div>
+<div class="sum" style="margin-top:14px">
+  六支各管一段：封面起机就唱、四章各一主题、终局一曲。哪支不对报 id（比如「mu-huizhou 换掉」）——
+  备选还压在 tools/_mus/dl/（9 支），换表里那一行 + 台账跟着改就行。
+</div>
+<script src="行旅数据.js"></script>
+<script>
+(function () {
+  "use strict";
+  var P = {}, el = document.getElementById("list"), h = "", n = 0, m = 0, w = 0;
+  function audio(s) {
+    var id = s.f, a = P[id];
+    if (a) return a;
+    a = P[id] = new Audio("素材/音效/" + id + "." + (s.ext || "mp3"));
+    a.preload = "metadata";
+    return a;
+  }
+  for (var i = 0; i < SFX.length; i++) {
+    var s = SFX[i], src = s.src && s.lic;
+    if (src) n++;
+    if (s.warn) w++;
+    h += '<div class="row' + (src ? "" : " miss") + '" id="r' + i + '">' +
+      '<div class="id">' + s.id + (s.loop ? '<br><span class="d">循环</span>' : "") + "</div>" +
+      '<div class="go" data-i="' + i + '">' + (src ? "试听" : "缺") + "</div>" +
+      '<div class="d" id="d' + i + '">' + (src ? "" : "—") + "</div>" +
+      '<div class="use">' + s.on +
+      (src ? '<i class="lic"><span class="tag ' + (s.warn ? "no" : "ok") + '">' + s.lic.split(" · ")[0] +
+        "</span>" + s.lic.replace(/^[^·]*· [^·]*· /, "") + "　<a href=\"" + s.src + "\">出处</a>" +
+        (s.warn ? '<br><span class="warn">⚠ ' + s.warn + "</span>" : "") + "</i>" : '<i class="lic warn">未落地 · 搜索词：' + s.q + "</i>") +
+      "</div></div>";
+  }
+  el.innerHTML = h;
+  document.getElementById("sum").innerHTML =
+    "已落盘 <b>" + n + "/" + SFX.length + "</b>（有出处且有授权）　·　" +
+    "我给自己打了存疑标记的 <b>" + w + "</b> 条　·　" +
+    "缺 <b>" + (SFX.length - n) + "</b> 条";
+  // 时长在 loadedmetadata 之后才读得到 —— 读不到就是文件不在或浏览器不认这个编码
+  for (var k = 0; k < SFX.length; k++) {
+    if (!SFX[k].src) continue;
+    (function (idx) {
+      var a = audio(SFX[idx].id);
+      a.addEventListener("loadedmetadata", function () {
+        var kb = 0;
+        document.getElementById("d" + idx).innerHTML =
+          '<span class="tag ok">' + (a.duration ? a.duration.toFixed(1) + "s" : "?") + "</span>";
+      });
+      a.addEventListener("error", function () {
+        document.getElementById("d" + idx).innerHTML = '<span class="tag no">读不出</span>';
+      });
+    })(k);
+  }
+  var playing = -1;
+  el.addEventListener("click", function (e) {
+    var t = e.target;
+    if (!t.classList.contains("go")) return;
+    var i = +t.getAttribute("data-i"), s = SFX[i];
+    if (!s.src) return;
+    var a = audio(s);
+    if (playing === i && !a.paused) { a.pause(); t.innerHTML = "试听"; playing = -1; return; }
+    if (playing >= 0) { var o = audio(SFX[playing].id); o.pause();
+      document.querySelector('#r' + playing + ' .go').innerHTML = "试听"; }
+    a.currentTime = 0;
+    a.play().then(function () { t.innerHTML = "停"; playing = i; })
+      .catch(function () { t.innerHTML = "被拦"; });
+    a.onended = function () { t.innerHTML = "试听"; playing = -1; };
+  });
+})();
+
+/* ── 配乐试听：与音效同一套行，独立一个池（目录不同）──────────── */
+(function () {
+  "use strict";
+  if (typeof MUS === "undefined") return;
+  var P = {}, el = document.getElementById("mulist"), h = "", n = 0;
+  function audio(s) {
+    var id = s.f, a = P[id];
+    if (a) return a;
+    a = P[id] = new Audio("素材/音乐/" + id + "." + (s.ext || "mp3"));
+    a.preload = "metadata";
+    return a;
+  }
+  for (var i = 0; i < MUS.length; i++) {
+    var s = MUS[i], src = s.src && s.lic;
+    if (src) n++;
+    h += '<div class="row' + (src ? "" : " miss") + '" id="m' + i + '">' +
+      '<div class="id">' + s.id + '<br><span class="d">循环</span></div>' +
+      '<div class="go" data-i="' + i + '">' + (src ? "试听" : "缺") + "</div>" +
+      '<div class="d" id="md' + i + '">' + (src ? "" : "—") + "</div>" +
+      '<div class="use">' + s.on +
+      (src ? '<i class="lic"><span class="tag ok">' + s.lic.split(" · ")[0] +
+        "</span>" + s.lic.replace(/^[^·]*· [^·]*· /, "") + "　<a href=\"" + s.src + "\">出处</a></i>"
+        : '<i class="lic warn">未落地 · 搜索词：' + s.q + "</i>") +
+      "</div></div>";
+  }
+  el.innerHTML = h;
+  document.getElementById("musum").innerHTML =
+    "已落盘 <b>" + n + "/" + MUS.length + "</b>（有出处且有授权 · check_lic 盯着这本账）";
+  for (var k = 0; k < MUS.length; k++) {
+    if (!MUS[k].src) continue;
+    (function (idx) {
+      var a = audio(MUS[idx].id);
+      a.addEventListener("loadedmetadata", function () {
+        document.getElementById("md" + idx).innerHTML =
+          '<span class="tag ok">' + (a.duration ? a.duration.toFixed(1) + "s" : "?") + "</span>";
+      });
+      a.addEventListener("error", function () {
+        document.getElementById("md" + idx).innerHTML = '<span class="tag no">读不出</span>';
+      });
+    })(k);
+  }
+  var playing = -1;
+  el.addEventListener("click", function (e) {
+    var t = e.target;
+    if (!t.classList.contains("go")) return;
+    var i = +t.getAttribute("data-i"), s = MUS[i];
+    if (!s.src) return;
+    var a = audio(s);
+    if (playing === i && !a.paused) { a.pause(); t.innerHTML = "试听"; playing = -1; return; }
+    if (playing >= 0) { var o = audio(MUS[playing].id); o.pause();
+      document.querySelector('#m' + playing + ' .go').innerHTML = "试听"; }
+    a.currentTime = 0;
+    a.play().then(function () { t.innerHTML = "停"; playing = i; })
+      .catch(function () { t.innerHTML = "被拦"; });
+    a.onended = function () { t.innerHTML = "试听"; playing = -1; };
+  });
+})();
+</script>
+</body>
+</html>

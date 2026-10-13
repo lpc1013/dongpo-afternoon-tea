@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8">
+<title>东坡行旅 · 风格对照 A/B/C</title>
+<style>
+body{margin:0;padding:26px 30px 60px;background:#efe9df;color:#2b2b2b;
+ font:15px/1.7 "Microsoft YaHei","PingFang SC",sans-serif}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:2px}
+.sub{color:#7a6f60;margin:0 0 22px;font-size:13px}
+h2{font-size:17px;margin:26px 0 8px;border-left:4px solid #b4472f;padding-left:10px}
+p{margin:6px 0}
+b{color:#8f2f1c}
+.hard{background:#e3ddd2;border-left:4px solid #2f5d72;padding:10px 14px;font-size:14px}
+section{margin:30px 0 44px;background:#f7f3ec;border:1px solid #d8cfbf;padding:16px 18px}
+h3{margin:0 0 12px;font-size:19px;letter-spacing:3px;color:#3a3327}
+.vers{display:flex;gap:16px;flex-wrap:wrap}
+.ver{flex:1 1 300px;min-width:300px}
+h4{margin:0 0 8px;font-size:14px;color:#5a5040;letter-spacing:1px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+figure{margin:0}
+img{width:100%;display:block;border:1px solid #cfc4b1;background:#fff}
+figcaption{font-size:11px;color:#8a7f6d;margin-top:3px}
+.why{margin-top:14px;padding-top:10px;border-top:1px dashed #cfc4b1;font-size:14px}
+.none{color:#a09377}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.roll{padding:14px 16px}
+code{background:#e5decf;padding:1px 5px;font-size:13px}
+.dim{color:#8a7f6d;font-size:12px}
+table.box{border-collapse:collapse;margin:10px 0 4px;font-size:13.5px}
+table.box th,table.box td{border:1px solid #cfc4b1;padding:6px 10px;text-align:left;vertical-align:top;background:#fbf8f2}
+table.box th{background:#e9e2d5;font-weight:600}
+</style></head><body>
+<h1>风格对照：A 现在配方 / B 电影感 / C 高调明快</h1>
+<p class="sub">同一场景各三版 × 每版四张候选 · 图是 <code>素材/</code> 下的相对路径，别把 html 单独拷走</p>
+
+<h2>已定：灶前 C4 · 堂上 C4 · 儋州 B3</h2>
+<p><b>定调规则：环境是庇护的屏走 C（高调明快），环境是敌人的屏走 B（电影感、暗）。</b>
+按这个规则四章的温度是往下走的 —— <b>黄州 C → 惠州 C → 定州 B → 儋州 B</b>，
+贬谪越深、光越狠，这条温度弧线本身就是叙事。</p>
+<p class="hard">⚠ <b>新风格把自动量坐标的三个工具全打穿了</b>：
+<code>measure_gilt.py</code>（找暖框）、<code>measure_plaques.py</code>（环带亮度）、
+<code>measure_blank.py</code>（直接找亮素面）在 <code>fx-court-c-4</code> 这块
+<b>肉眼可见又大又干净的空白匾</b>上给出三个不同、且都不对的框。
+原因：C 的织金回纹被降采样打碎、B 把主体压进暗部。<b>所以 <code>匾面.json</code> 里 <code>fx-*</code> 的自动结果不要信</b>，
+下面这几组坐标是<b>叠网格人工读出来的</b>（<code>tools/grid_overlay.py</code>，精度约 ±0.01）。</p>
+<h3>选定三张的叠字框（人工读网格）</h3>
+<table class="box"><tr><th>图</th><th>可写面 x / y / w / h</th><th>是什么</th></tr>
+<tr><td><code>fx-court-c-4</code></td><td><b>0.33 / 0.07 / 0.35 / 0.15</b><br><span class="dim">含框 0.305/0.04/0.40/0.22</span></td>
+<td>檐下那块织金回纹大匾的<b>内素面</b>，宽 0.35，是这批里最大的可写面，够放四字堂名</td></tr>
+<tr><td><code>fx-stove-c-4</code></td><td><b>0.02 / 0.12 / 0.25 / 0.40</b></td>
+<td>左侧那面<b>被日照亮的素墙</b>，几乎无细节；注意别压到挂着的蓑衣斗笠（x&gt;0.27）</td></tr>
+<tr><td><code>fx-dan-b-3</code></td><td><b>0.30 / 0.12 / 0.40 / 0.30</b><br><span class="dim">或路中央 0.35/0.60/0.30/0.28</span></td>
+<td>中间那片<b>晒到发白的海雾</b>，极低细节；<b>但这里接近纯白，必须用深色字</b>。
+另：两侧那两面被吹平的空白布招（x 0.33–0.40 与 0.55–0.72，y≈0.52–0.64）是现成的"地名牌"</td></tr>
+</table>
+<h2>为什么是五条不是四条</h2>
+<p>调研那四条（明度范围／色相／光的故事／动）<b>机制是对的，但要补成五条</b>：
+<b>「key 定在哪」是独立的第五件事</b>。按字面拉满得到的是 B —— 电影感、偏暗，
+因为被当成正面例子的《极乐迪斯科》《Spiritfarer》<b>本身都不是高调</b>。
+要「欢快明亮」必须额外锁死：整幅 key 提亮、暗部不许近黑、靠<b>亮—更亮</b>分层而不是<b>黑—白</b>。</p>
+<p><b>但别一刀切全上 C</b>：儋州那张 C 是热带明信片，好看，<b>把"儋州是惩罚之地"讲没了</b>；
+所以环境是敌人的屏要留在 B。</p>
+<p class="hard">硬约束三版都守住：下三分之一留一整片干净地面当<b>叠字安全带</b>，
+只是要求它<b>被照亮、带方向渐变与柔长影</b>，不再平铺成死灰；匾／招幌／纸面一律空白，字走 HTML。</p>
+
+<section><h3>黄州灶前</h3><div class="vers"><div class="ver"><h4>A 现在配方</h4><div class="grid"><figure><img src="素材/fx-stove-a-1.webp" alt="fx-stove-a-1.webp"><figcaption>fx-stove-a-1.webp</figcaption></figure>
+<figure><img src="素材/fx-stove-a-2.webp" alt="fx-stove-a-2.webp"><figcaption>fx-stove-a-2.webp</figcaption></figure>
+<figure><img src="素材/fx-stove-a-3.webp" alt="fx-stove-a-3.webp"><figcaption>fx-stove-a-3.webp</figcaption></figure>
+<figure><img src="素材/fx-stove-a-4.webp" alt="fx-stove-a-4.webp"><figcaption>fx-stove-a-4.webp</figcaption></figure></div></div><div class="ver"><h4>B 四条全修·电影感</h4><div class="grid"><figure><img src="素材/fx-stove-b-1.webp" alt="fx-stove-b-1.webp"><figcaption>fx-stove-b-1.webp</figcaption></figure>
+<figure><img src="素材/fx-stove-b-2.webp" alt="fx-stove-b-2.webp"><figcaption>fx-stove-b-2.webp</figcaption></figure>
+<figure><img src="素材/fx-stove-b-3.webp" alt="fx-stove-b-3.webp"><figcaption>fx-stove-b-3.webp</figcaption></figure>
+<figure><img src="素材/fx-stove-b-4.webp" alt="fx-stove-b-4.webp"><figcaption>fx-stove-b-4.webp</figcaption></figure></div></div><div class="ver"><h4>C 四条全修·高调明快</h4><div class="grid"><figure><img src="素材/fx-stove-c-1.webp" alt="fx-stove-c-1.webp"><figcaption>fx-stove-c-1.webp</figcaption></figure>
+<figure><img src="素材/fx-stove-c-2.webp" alt="fx-stove-c-2.webp"><figcaption>fx-stove-c-2.webp</figcaption></figure>
+<figure><img src="素材/fx-stove-c-3.webp" alt="fx-stove-c-3.webp"><figcaption>fx-stove-c-3.webp</figcaption></figure>
+<figure><img src="素材/fx-stove-c-4.webp" alt="fx-stove-c-4.webp"><figcaption>fx-stove-c-4.webp</figcaption></figure></div></div></div><p class="why">A 的问题：「只允许柔和的日光斜影渐变」把明度范围压平、光没有来源。<br>B：炉膛火做唯一热光源＋窗外冷光，两束在灶台交接；暗部近黑。<br><b>C 首选 1 或 4</b>：同样的光与风，但整幅 key 提亮、暗部透亮不近黑 —— 这才叫欢快。</p></section>
+<section><h3>黄州堂上</h3><div class="vers"><div class="ver"><h4>A 现在配方</h4><div class="grid"><figure><img src="素材/fx-court-a-1.webp" alt="fx-court-a-1.webp"><figcaption>fx-court-a-1.webp</figcaption></figure>
+<figure><img src="素材/fx-court-a-2.webp" alt="fx-court-a-2.webp"><figcaption>fx-court-a-2.webp</figcaption></figure>
+<figure><img src="素材/fx-court-a-3.webp" alt="fx-court-a-3.webp"><figcaption>fx-court-a-3.webp</figcaption></figure>
+<figure><img src="素材/fx-court-a-4.webp" alt="fx-court-a-4.webp"><figcaption>fx-court-a-4.webp</figcaption></figure></div></div><div class="ver"><h4>B 四条全修·电影感</h4><div class="grid"><figure><img src="素材/fx-court-b-1.webp" alt="fx-court-b-1.webp"><figcaption>fx-court-b-1.webp</figcaption></figure>
+<figure><img src="素材/fx-court-b-2.webp" alt="fx-court-b-2.webp"><figcaption>fx-court-b-2.webp</figcaption></figure>
+<figure><img src="素材/fx-court-b-3.webp" alt="fx-court-b-3.webp"><figcaption>fx-court-b-3.webp</figcaption></figure>
+<figure><img src="素材/fx-court-b-4.webp" alt="fx-court-b-4.webp"><figcaption>fx-court-b-4.webp</figcaption></figure></div></div><div class="ver"><h4>C 四条全修·高调明快</h4><div class="grid"><figure><img src="素材/fx-court-c-1.webp" alt="fx-court-c-1.webp"><figcaption>fx-court-c-1.webp</figcaption></figure>
+<figure><img src="素材/fx-court-c-2.webp" alt="fx-court-c-2.webp"><figcaption>fx-court-c-2.webp</figcaption></figure>
+<figure><img src="素材/fx-court-c-3.webp" alt="fx-court-c-3.webp"><figcaption>fx-court-c-3.webp</figcaption></figure>
+<figure><img src="素材/fx-court-c-4.webp" alt="fx-court-c-4.webp"><figcaption>fx-court-c-4.webp</figcaption></figure></div></div></div><p class="why">B 很美但读起来是空宅/夜里；<b>C 首选 1 或 4</b>：亮带落在青砖地上、匾框织金是画面最亮点，是「白天办公的衙门」。<br>⚠ C 的窗棂石青偏绿写太鲜，有点滑向手游原画，下一轮压回去一半。</p></section>
+<section><h3>儋州黎市</h3><div class="vers"><div class="ver"><h4>A 现在配方</h4><div class="grid"><figure><img src="素材/fx-dan-a-1.webp" alt="fx-dan-a-1.webp"><figcaption>fx-dan-a-1.webp</figcaption></figure>
+<figure><img src="素材/fx-dan-a-2.webp" alt="fx-dan-a-2.webp"><figcaption>fx-dan-a-2.webp</figcaption></figure>
+<figure><img src="素材/fx-dan-a-3.webp" alt="fx-dan-a-3.webp"><figcaption>fx-dan-a-3.webp</figcaption></figure>
+<figure><img src="素材/fx-dan-a-4.webp" alt="fx-dan-a-4.webp"><figcaption>fx-dan-a-4.webp</figcaption></figure></div></div><div class="ver"><h4>B 四条全修·电影感</h4><div class="grid"><figure><img src="素材/fx-dan-b-1.webp" alt="fx-dan-b-1.webp"><figcaption>fx-dan-b-1.webp</figcaption></figure>
+<figure><img src="素材/fx-dan-b-2.webp" alt="fx-dan-b-2.webp"><figcaption>fx-dan-b-2.webp</figcaption></figure>
+<figure><img src="素材/fx-dan-b-3.webp" alt="fx-dan-b-3.webp"><figcaption>fx-dan-b-3.webp</figcaption></figure>
+<figure><img src="素材/fx-dan-b-4.webp" alt="fx-dan-b-4.webp"><figcaption>fx-dan-b-4.webp</figcaption></figure></div></div><div class="ver"><h4>C 四条全修·高调明快</h4><div class="grid"><figure><img src="素材/fx-dan-c-1.webp" alt="fx-dan-c-1.webp"><figcaption>fx-dan-c-1.webp</figcaption></figure>
+<figure><img src="素材/fx-dan-c-2.webp" alt="fx-dan-c-2.webp"><figcaption>fx-dan-c-2.webp</figcaption></figure>
+<figure><img src="素材/fx-dan-c-3.webp" alt="fx-dan-c-3.webp"><figcaption>fx-dan-c-3.webp</figcaption></figure>
+<figure><img src="素材/fx-dan-c-4.webp" alt="fx-dan-c-4.webp"><figcaption>fx-dan-c-4.webp</figcaption></figure></div></div></div><p class="why"><b>这一屏选了 B，首选 3（已定）</b>：地面烫到反光、热浪把海平线扭弯、一片干棕榈叶被风推着滚过路中央——儋州的酷热是消渴疾的对手，<b>不该被美化</b>。<br>C 是热带明信片，好看，但把「儋州是惩罚之地」这层讲没了。</p></section>
+<h2>定调之后铺开的一批（同一规则，另两章＋黄州街市）</h2>
+<section class="roll"><h3>定州堂上 · 走 B</h3><div class="grid4"><figure><img src="素材/fx-dz-court-b-1.webp" alt="fx-dz-court-b-1.webp"><figcaption>fx-dz-court-b-1.webp</figcaption></figure>
+<figure><img src="素材/fx-dz-court-b-2.webp" alt="fx-dz-court-b-2.webp"><figcaption>fx-dz-court-b-2.webp</figcaption></figure>
+<figure><img src="素材/fx-dz-court-b-3.webp" alt="fx-dz-court-b-3.webp"><figcaption>fx-dz-court-b-3.webp</figcaption></figure>
+<figure><img src="素材/fx-dz-court-b-4.webp" alt="fx-dz-court-b-4.webp"><figcaption>fx-dz-court-b-4.webp</figcaption></figure></div><p class="why">北方边镇、冬日冷阳：窗外一条<b>偏冷的亮带</b>，案角一只小炭盆是唯一的暖光，冷暖在砖地上交接出线；梁下与屋角近黑。<b>风</b>：破角窗纸往里吸、卷宗纸角掀起、炭上一缕细烟横倒。</p></section>
+<section class="roll"><h3>定州灶下 · 走 B</h3><div class="grid4"><figure><img src="素材/fx-dz-stove-b-1.webp" alt="fx-dz-stove-b-1.webp"><figcaption>fx-dz-stove-b-1.webp</figcaption></figure>
+<figure><img src="素材/fx-dz-stove-b-2.webp" alt="fx-dz-stove-b-2.webp"><figcaption>fx-dz-stove-b-2.webp</figcaption></figure>
+<figure><img src="素材/fx-dz-stove-b-3.webp" alt="fx-dz-stove-b-3.webp"><figcaption>fx-dz-stove-b-3.webp</figcaption></figure>
+<figure><img src="素材/fx-dz-stove-b-4.webp" alt="fx-dz-stove-b-4.webp"><figcaption>fx-dz-stove-b-4.webp</figcaption></figure></div><p class="why">炕连灶、黑铁锅、梁上垂干玉米。<b>雪地把冷蓝反射光整片送进来</b>，灶口炭火是唯一的暖光，<b>锅的迎光面橙、背光面青蓝</b>——一锅上同时读到两个光源。</p></section>
+<section class="roll"><h3>惠州堂上 · 走 C</h3><div class="grid4"><figure><img src="素材/fx-hiz-court-c-1.webp" alt="fx-hiz-court-c-1.webp"><figcaption>fx-hiz-court-c-1.webp</figcaption></figure>
+<figure><img src="素材/fx-hiz-court-c-2.webp" alt="fx-hiz-court-c-2.webp"><figcaption>fx-hiz-court-c-2.webp</figcaption></figure>
+<figure><img src="素材/fx-hiz-court-c-3.webp" alt="fx-hiz-court-c-3.webp"><figcaption>fx-hiz-court-c-3.webp</figcaption></figure>
+<figure><img src="素材/fx-hiz-court-c-4.webp" alt="fx-hiz-court-c-4.webp"><figcaption>fx-hiz-court-c-4.webp</figcaption></figure></div><p class="why">岭南开敞、竹帘白墙、门外芭蕉。上午太阳从敞开的门扑进来，<b>红石板把光反弹上去、照亮桌底与椅背下沿</b>，绿叶把一部分光滤成淡绿落在墙上。<b>匾量到了：0.363/0.062/0.285/0.188</b>（这批里唯一自动量准的）。</p></section>
+<section class="roll"><h3>惠州灶下 · 走 C</h3><div class="grid4"><figure><img src="素材/fx-hiz-stove-c-1.webp" alt="fx-hiz-stove-c-1.webp"><figcaption>fx-hiz-stove-c-1.webp</figcaption></figure>
+<figure><img src="素材/fx-hiz-stove-c-2.webp" alt="fx-hiz-stove-c-2.webp"><figcaption>fx-hiz-stove-c-2.webp</figcaption></figure>
+<figure><img src="素材/fx-hiz-stove-c-3.webp" alt="fx-hiz-stove-c-3.webp"><figcaption>fx-hiz-stove-c-3.webp</figcaption></figure>
+<figure><img src="素材/fx-hiz-stove-c-4.webp" alt="fx-hiz-stove-c-4.webp"><figcaption>fx-hiz-stove-c-4.webp</figcaption></figure></div><p class="why">陶锅、荔枝柴、墙上一串干荔枝。湿红石地反亮，竹格门把光切成一条条斜影落在地上。</p></section>
+<section class="roll"><h3>黄州街市 · 走 C</h3><div class="grid4"><figure><img src="素材/fx-hz-street-c-1.webp" alt="fx-hz-street-c-1.webp"><figcaption>fx-hz-street-c-1.webp</figcaption></figure>
+<figure><img src="素材/fx-hz-street-c-2.webp" alt="fx-hz-street-c-2.webp"><figcaption>fx-hz-street-c-2.webp</figcaption></figure>
+<figure><img src="素材/fx-hz-street-c-3.webp" alt="fx-hz-street-c-3.webp"><figcaption>fx-hz-street-c-3.webp</figcaption></figure>
+<figure><img src="素材/fx-hz-street-c-4.webp" alt="fx-hz-street-c-4.webp"><figcaption>fx-hz-street-c-4.webp</figcaption></figure></div><p class="why">青石板＋布招幌＋远处空白照壁。<b>江面把一道晃动反光弹上最近屋檐底，那一小块是画面最亮点</b>；一面幌子被吹平、另一面只轻摆——三种速率在这里最清楚。</p></section>
+</body></html>

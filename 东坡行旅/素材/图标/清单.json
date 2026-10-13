@@ -1,0 +1,50 @@
+{
+ "jar-honey": {
+  "pick": "jar-honey-1-cut.png",
+  "w": 151,
+  "h": 208,
+  "cands": 1
+ },
+ "jar-oil": {
+  "pick": "jar-oil-1-cut.png",
+  "w": 172,
+  "h": 208,
+  "cands": 1
+ },
+ "jar-salt": {
+  "pick": "jar-salt-1-cut.png",
+  "w": 208,
+  "h": 200,
+  "cands": 1
+ },
+ "jar-sauce": {
+  "pick": "jar-sauce-1-cut.png",
+  "w": 199,
+  "h": 208,
+  "cands": 1
+ },
+ "jar-sugar": {
+  "pick": "jar-sugar-1-cut.png",
+  "w": 208,
+  "h": 169,
+  "cands": 1
+ },
+ "jar-vinegar": {
+  "pick": "jar-vinegar-1-cut.png",
+  "w": 83,
+  "h": 208,
+  "cands": 1
+ },
+ "ing-coconut": {
+  "pick": "ing-coconut-1-cut.png",
+  "w": 208,
+  "h": 188,
+  "cands": 1
+ },
+ "ing-song": {
+  "pick": "ing-song-1-cut.png",
+  "w": 208,
+  "h": 163,
+  "cands": 1
+ }
+}

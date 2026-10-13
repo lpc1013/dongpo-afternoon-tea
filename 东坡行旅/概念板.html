@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>东坡行旅 · 概念板</title>
+<style>
+  :root { --paper:#f6efe2; --ink:#3a342c; --cinnabar:#b4472f; --azurite:#2f5d72; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font:16px/1.7 "Songti SC","STSong","SimSun",serif; }
+  header { padding:34px 40px 10px; }
+  h1 { margin:0; font-size:30px; letter-spacing:.14em; }
+  h1 em { font-style:normal; color:var(--cinnabar); }
+  .sub { margin:6px 0 0; color:#7a6f5f; font-size:14px; }
+  section { padding:18px 40px 30px; border-top:1px solid #e0d4bd; margin-top:22px; }
+  h2 { font-size:19px; margin:0 0 4px; letter-spacing:.1em; }
+  h2 span { font-size:13px; color:#8b7f6c; font-weight:normal; margin-left:10px; letter-spacing:0; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:18px; margin-top:14px; }
+  figure { margin:0; background:#fffaf1; border:1px solid #e3d7c0; position:relative; cursor:zoom-in; }
+  figure.pick { border:2px solid var(--cinnabar); }
+  figure.pick::after { content:"推荐"; position:absolute; top:8px; left:8px; background:var(--cinnabar);
+    color:#fff8ec; font-size:12px; padding:2px 8px; letter-spacing:.1em; }
+  img { display:block; width:100%; height:210px; object-fit:cover; }
+  figcaption { padding:7px 10px 9px; font-size:13px; color:#6d6252; border-top:1px dashed #e3d7c0; }
+  #lightbox { position:fixed; inset:0; background:rgba(30,26,20,.92); display:none;
+    align-items:center; justify-content:center; z-index:9; padding:30px; }
+  #lightbox.on { display:flex; }
+  #lightbox img { max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; cursor:zoom-out; }
+  .note { font-size:14px; color:#6d6252; background:#fffaf1; border-left:3px solid var(--azurite);
+    padding:10px 14px; margin:12px 0 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>东坡行旅 <em>·</em> 概念板</h1>
+  <p class="sub">四张图定一条美术路。红框是我推荐的那张，点开看大图。图均为即梦 Seedream 5.0 Lite 产出的缩览尺寸（480~640），选定后要逐张开预览抓高清。</p>
+</header>
+
+<section>
+  <h2>一、Q版 <span>吐槽、行旅、地图小人、灶前演出用这一层</span></h2>
+  <div class="grid">
+    <figure class="pick"><img src="素材/qban-2.webp"><figcaption>qban-2 · 捧锅掀盖，热气从锅盖缝里出来</figcaption></figure>
+    <figure><img src="素材/qban-4.webp"><figcaption>qban-4 · 同一批，脸更圆，热气更长</figcaption></figure>
+  </div>
+  <p class="note">同一批里还出了一张没人物的灶（我把它留作"灶前关卡"的道具图）。Q版和厚涂的服装是同一条：黑色东坡巾 + 石青圆领袍 + 暗金团纹，两层形象靠这个咬合。</p>
+</section>
+
+<section>
+  <h2>二、古风厚涂立绘 <span>主视图、对话、断案堂上用这一层</span></h2>
+  <div class="grid">
+    <figure class="pick"><img src="../素材/dongpo2-2.webp"><figcaption>dongpo2-2 · 旧线已定的东坡立绘，可直接沿用</figcaption></figure>
+    <figure><img src="../素材/dongpo2-3.webp"><figcaption>dongpo2-3 · 同批，侧身角度更沉</figcaption></figure>
+    <figure><img src="../素材/dongpo2-1.webp"><figcaption>dongpo2-1 · 同批，灰巾版</figcaption></figure>
+    <figure><img src="../素材/dongpo2-4.webp"><figcaption>dongpo2-4 · 同批，笑得更开</figcaption></figure>
+  </div>
+  <p class="note">这四张是另一条线（下午茶·卡牌）已经在用的立绘。新线要不要共用同一张脸，是个决定：共用=两线互认，读者一眼知道是同一个东坡；不共用=新线自己走更写实的厚涂。</p>
+</section>
+
+<section>
+  <h2>三、行旅地图 <span>宋朝舆图 + Q版小人，节点上叠空白榜牌写州名</span></h2>
+  <div class="grid">
+    <figure class="pick"><img src="素材/map169-1.webp"><figcaption>map169-1 · 16:9，节点带编号，青绿山水压江口</figcaption></figure>
+    <figure><img src="素材/map169-2.webp"><figcaption>map169-2 · 16:9，路更疏朗，留白多</figcaption></figure>
+    <figure><img src="素材/map-2.webp"><figcaption>map-2 · 1:1 版，城郭与船最全</figcaption></figure>
+    <figure><img src="素材/map-1.webp"><figcaption>map-1 · 1:1 版，海在右下，适合斜向路线</figcaption></figure>
+  </div>
+  <p class="note">关键收获：图上那些<b>空白木牌和绢旗是白送的</b>——州名（黄州/惠州/儋州）用 HTML 叠在牌子上，既不会出乱码汉字，也方便改名和加高亮。即梦画不出可靠的中文字，这条要写进规矩。</p>
+</section>
+
+<section>
+  <h2>四、站点主视图 <span>黄州·临皋亭灶间（空场，立绘叠在前面）</span></h2>
+  <div class="grid">
+    <figure class="pick"><img src="素材/scene-1.webp"><figcaption>scene-1 · 墙上蓑衣与东坡巾，左案书卷茶盏，右窗见江山</figcaption></figure>
+    <figure><img src="素材/scene-4.webp"><figcaption>scene-4 · 光更暖，竹篮五花肉最清楚</figcaption></figure>
+    <figure><img src="素材/scene-3.webp"><figcaption>scene-3 · 窗棂最讲究，但人位会被蓑衣压住</figcaption></figure>
+    <figure><img src="素材/scene-2.webp"><figcaption>scene-2 · 竖构图感强，热气最旺</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <h2>五、食单卡 <span>东坡肉（黄州·第一道收录）</span></h2>
+  <div class="grid">
+    <figure class="pick"><img src="素材/dish-rou-2.webp"><figcaption>dish-rou-2 · 四方块，肥瘦三层看得清，酱色高光最正</figcaption></figure>
+    <figure><img src="素材/dish-rou-1.webp"><figcaption>dish-rou-1 · 同批，块数少而大，更像"未切"</figcaption></figure>
+    <figure><img src="素材/dish-rou-4.webp"><figcaption>dish-rou-4 · 同批，肉块堆得满</figcaption></figure>
+    <figure><img src="素材/dish-rou-3.webp"><figcaption>dish-rou-3 · 同批，偏干，酱色浅</figcaption></figure>
+  </div>
+  <p class="note">食单卡的构图规矩已试出来：粗陶器 + 竹垫 + 一小碟黄酒 + 一缕热气 + 浅米留白，四张全中，可以当模板复用到其它菜（荔枝/生蚝/羊脊骨/萝卜羹）。</p>
+</section>
+
+<section>
+  <h2>六、话本层 <span>明清虚构的"东坡神探/佛印机锋"，用版刻绣像跟正史层切开</span></h2>
+  <div class="grid">
+    <figure class="pick"><img src="素材/huaben-1.webp"><figcaption>huaben-1 · 版框最完整，堂上堂下位置关系最清楚，匾额与立柱牌全空白</figcaption></figure>
+    <figure><img src="素材/huaben-4.webp"><figcaption>huaben-4 · 纸斑最重，衙役四人分列，气势像真刻本</figcaption></figure>
+    <figure><img src="素材/huaben-2.webp"><figcaption>huaben-2 · 只有两役，堂案画成了架子，稍空</figcaption></figure>
+    <figure><img src="素材/huaben-3.webp"><figcaption>huaben-3 · 线条最松，但官人偏小，立绘叠不住</figcaption></figure>
+  </div>
+  <p class="note">这一层只有墨色与纸色，跟正史层的厚涂彩色天然分得开——玩家一进话本关就知道"这是后人编的"，不用额外写说明。匾额与两块立柱牌同样是空白的，"东坡神探"之类的堂名可以叠字。</p>
+</section>
+
+<section>
+  <h2>七、市井横卷 <span>采买：21:9，拖 Q 版小人从右往左走摊子</span></h2>
+  <div class="grid">
+    <figure class="pick"><img src="素材/market-2.webp"><figcaption>market-2 · 鱼摊/肉案/菜棚/酒肆/乌篷船一字排开，热气与留白最好</figcaption></figure>
+    <figure><img src="素材/market-4.webp"><figcaption>market-4 · 肉案挂肉最清楚，右侧菜摊最大（适合放"一百五十钱"的账）</figcaption></figure>
+    <figure><img src="素材/market-1.webp"><figcaption>market-1 · 远景城楼好，摊子偏挤</figcaption></figure>
+    <figure><img src="素材/market-3.webp"><figcaption>market-3 · 屋宇最整，但人物太小、路不够</figcaption></figure>
+  </div>
+  <p class="note">空白招幌又是白送的：摊名与物价用 HTML 叠上去。四张都画出了点景小人（比旧线那次"点景人物被整条忽略"好得多），但脸不可辨——这正合适，摊主的话用气泡说，不用看脸。</p>
+</section>
+
+<section>
+  <h2>八、表情差分与入口图标 <span>2026-09-25 晚：FX 表接上之后，席位图一并换成原生 512×680 那批</span></h2>
+  <div class="grid">
+    <figure><img src="../_shots/fx_live.png" alt=""><figcaption>六屏实拍：四个年龄段的苏轼＋王朝云都换到了神情</figcaption></figure>
+    <figure><img src="../_shots/seats.png" alt=""><figcaption>四章席位图（换后）：程正辅终于有了自己的脸，李之仪换成合史实的白须长者</figcaption></figure>
+    <figure><img src="../_shots/icons.png" alt=""><figcaption>入口改图标优先：竖幅标签撤了，名字只在悬停时显</figcaption></figure>
+    <figure><img src="../_shots/tip2.png" alt=""><figcaption>悬停名牌放大：底子是 ui-btn-1 那条朱红斜切带，字必须用深墨色（白心是白的）</figcaption></figure>
+    <figure><img src="../_shots/fx_cmp3.png" alt=""><figcaption>八个 NPC：左＝换之前的席位图，右四＝新批次 平/笑/悲/正</figcaption></figure>
+    <figure><img src="../_shots/fx_dp.png" alt=""><figcaption>苏轼四个年龄段：左＝在用立绘，右四＝新批次。57 岁最贴，58/62 衣冠有变</figcaption></figure>
+  </div>
+  <p class="note">台词标 9 个神情词、立绘先产了 4 个槽，中间靠 <code>行旅数据.js</code> 顶部的 FX 表接。
+    到位率分三档报，不合成一个百分数：<b>精确</b>只有 xiao→笑 那一对；
+    <b>近似</b>是 lei/si/ku→悲、leng/nu→正，同族但不同神；<b>拿不到</b>的 8 个（微惊·病容·戏谑·黎家少年·王朝云「正」）
+    已排进 <code>tools/prompts_img.tsv</code> 末尾的补抽队列。
+    动作立绘（烧火、惊堂木那批）<b>故意不进这张表</b>——姿势就是信息，换成站姿笑反而丢了戏。</p>
+</section>
+
+<section>
+  <h2>九、三件丑事接完 <span>2026-09-26 凌晨：竖幅标签 → 图标、木柜 → 博古架、横匾 → 字落在背景自带的空匾上</span></h2>
+  <div class="grid">
+    <figure class="pick"><img src="../_shots/p1_done.png" alt=""><figcaption>六屏总览：四章 hub ＋ 堂上 ＋ 席间。红横横幅一条不剩，标题成了场景里挂着的牌</figcaption></figure>
+    <figure><img src="../_shots/g_sb_hz.png" alt=""><figcaption>宋式博古架 hold-hang2-1：六个开口大小不一，按大小分配六个数值（格位是量出来的）</figcaption></figure>
+    <figure><img src="../_shots/tip2.png" alt=""><figcaption>入口图标放大：惊堂木／白砂锅／石青酒盏／布招幌／扎口信，名字走悬停（底子 ui-btn-1，字必须深墨色）</figcaption></figure>
+    <figure><img src="../_shots/seats.png" alt=""><figcaption>席间三人常驻：席位图已一并换成表情批次，程正辅终于有了自己的脸</figcaption></figure>
+  </div>
+  <p class="note">三处踩过的坑记在 <code>交接-2026-09-25.md</code> §4 P1 与 §5：
+    <b>竖式牙牌那条路走不通</b>（标题是「屏名 · 案名 · 年号」混排，竖排换列会掉孤字；
+    而且标题一挪走，背景那块红框空匾就露出来更扎眼）；
+    <b>匾面坐标不可靠检测器</b>（<code>plaque()</code> 只认朱红框，12 张背景命中 2 张；
+    改成「上半幅最大亮而无色矩形」又会把窗和天光当成匾 —— 只有肉眼靠谱）；
+    <b>席间那屏没有一处墙面不被客人头顶挡住</b>，所以匾上只放桌名，原话与提示改走牌区下方那片空砖地。</p>
+</section>
+
+<div id="lightbox"><img alt=""></div>
+<script>
+  var lb = document.getElementById("lightbox"), lbi = lb.querySelector("img");
+  document.querySelectorAll("figure").forEach(function (f) {
+    f.addEventListener("click", function () { lbi.src = f.querySelector("img").src; lb.classList.add("on"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("on"); });
+  addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
+</script>
+</body>
+</html>

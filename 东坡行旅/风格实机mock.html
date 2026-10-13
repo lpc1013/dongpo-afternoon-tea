@@ -1,0 +1,98 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<title>新风格 · 1280×720 界面 mock</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#2a2620;padding:24px 26px 60px;font:14px/1.7 "Microsoft YaHei",serif;color:#eee}
+h1{font-size:20px;letter-spacing:3px;margin-bottom:4px}
+.sub{color:#9a9182;font-size:13px;margin-bottom:20px}
+.stage{position:relative;width:1280px;height:720px;margin:0 0 14px;overflow:hidden;
+ border:1px solid #6b5f4c;box-shadow:0 6px 26px rgba(0,0,0,.5)}
+.cap{width:1280px;margin:0 0 30px;color:#c9bfae;font-size:13px}
+.cap b{color:#e7d9b8}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* 左导航：图标优先、悬停才显名字（用户当初点名要的就是这个） */
+.nav{position:absolute;left:14px;top:96px;display:flex;flex-direction:column;gap:10px}
+.nav a{position:relative;display:block;width:46px;height:46px;border-radius:8px;
+ background:rgba(250,244,232,.82);box-shadow:0 2px 6px rgba(0,0,0,.28)}
+.nav a img{width:100%;height:100%;display:block}
+.nav a span{position:absolute;left:54px;top:12px;white-space:nowrap;
+ background:rgba(30,26,20,.86);color:#f2e8d5;padding:2px 9px;border-radius:4px;
+ font-size:12px;opacity:0;transition:opacity .15s}
+.nav a:hover span{opacity:1}
+.nav a.on{outline:2px solid #b4472f}
+/* 匾 / 可写面：位置就是人工读网格读出来的那个框，用来验字放正不正 */
+.plaque{position:absolute;display:flex;align-items:center;justify-content:center;
+ font:700 40px/1 "STKaiti","KaiTi",serif;letter-spacing:12px;text-indent:12px}
+.plaque.dark{color:#3a2a1c}
+.plaque.light{color:#f6ecd8;text-shadow:0 2px 6px rgba(0,0,0,.65)}
+.plaque.show{outline:1px dashed rgba(255,0,0,.75)}
+/* 底部对话条 */
+.dlg{position:absolute;left:0;right:0;bottom:0;height:172px;display:flex;align-items:flex-end}
+.dlg .paper{flex:1;margin:0 0 16px 78px;background:rgba(248,242,229,.93);
+ border:1px solid #c9b78f;border-top:3px double #b4472f;padding:12px 20px 14px;
+ box-shadow:0 -3px 14px rgba(0,0,0,.28)}
+.dlg .who{display:inline-block;background:#b4472f;color:#fff8ea;font-size:13px;
+ padding:2px 12px;letter-spacing:2px;margin-bottom:7px}
+.dlg .txt{font:15px/1.85 "Microsoft YaHei",serif;color:#2f2a22}
+.dlg .por{width:150px;height:200px;margin:0 26px -2px 6px;object-fit:contain;
+ filter:drop-shadow(0 -3px 10px rgba(0,0,0,.4))}
+/* 右栏：檐下五枚木牌（用户点名要替掉那个丑柜子的方案）。
+   位置**不能自己排 gap**：alt-hang 那张图里五枚木札的间距是不均匀的，
+   用固定 gap 会把字排到札缝上（第一版 mock 就是这么糊成一团的）。
+   下面用的是 `产图交付.md` 里量好的五枚木札坐标。
+   ⚠ 宽度 132px 时五枚札各只有约 15px，"体／康78"两行根本塞不下、直接叠字糊掉；
+   加宽到 210px 才勉强可读 —— 这块面板要真用，得比现在宽一半，或者每枚只放一个数。 */
+.tags{position:absolute;right:14px;top:70px;width:210px}
+.tags img{width:100%;display:block}
+.tags i{position:absolute;left:0;right:0;top:0;bottom:0;font-style:normal}
+.tags b{position:absolute;transform:translateX(-50%);text-align:center;
+ font:700 15px/1.2 "Microsoft YaHei";color:#4a3a26;letter-spacing:0;
+ text-shadow:0 1px 0 rgba(255,250,238,.8)}
+.hint{position:absolute;left:14px;bottom:12px;color:rgba(255,255,255,.72);font-size:12px;
+ background:rgba(20,16,12,.5);padding:3px 9px;border-radius:4px}
+</style></head><body>
+<h1>新风格叠上真实 UI 是什么样子</h1>
+<p class="sub">1280×720 三屏 · 背景=选定图 · 红虚线框=人工读网格读出的可写面 ·
+本页不碰 行旅.js / 行旅.css，只验风格</p>
+
+<div class="stage">
+  <img class="bg" src="素材/高清/fx-court-c-4.webp">
+  <div class="nav"><a class="on" href="#"><img src="素材/图标/ico-hall.png"><span>堂上</span></a><a class="" href="#"><img src="素材/图标/ico-stove.png"><span>灶前</span></a><a class="" href="#"><img src="素材/图标/ico-banquet.png"><span>席间</span></a><a class="" href="#"><img src="素材/图标/ico-street.png"><span>街市</span></a><a class="" href="#"><img src="素材/图标/ico-mail.png"><span>来信</span></a><a class="" href="#"><img src="素材/图标/ico-menu.png"><span>册</span></a></div>
+  <div class="plaque dark" style="left:33.0%;top:7.0%;width:35.0%;height:15.0%">自讼堂</div>
+  <div class="tags"><img src="素材/alt-hang-1-cut.png"><i><b style="left:12.1%;top:40.0%">体<br>78</b><b style="left:30.8%;top:40.0%">银<br>420</b><b style="left:46.7%;top:40.0%">意<br>平</b><b style="left:69.2%;top:40.0%">才<br>63</b><b style="left:87.5%;top:40.0%">学<br>41</b></i></div>
+  <div class="dlg">
+    <div class="paper"><span class="who">子瞻</span>
+      <div class="txt">这屏只是把新风格的背景按真实摆法叠一遍，用来看光和 UI 打不打架；字与数值都是占位，不代表最终文案。</div></div>
+    <img class="por" src="素材/立绘/ex-dp45-笑.png">
+  </div>
+  <div class="hint">判决前 · 堂上</div>
+</div>
+<div class="cap"><b>黄州 · 堂上</b> · 可写面 <code>0.33 / 0.07 / 0.35 / 0.15</code> · 匾面干净，四字标题正好占满，余量约两成</div>
+
+<div class="stage">
+  <img class="bg" src="素材/高清/fx-stove-c-4.webp">
+  <div class="nav"><a class="on" href="#"><img src="素材/图标/ico-hall.png"><span>堂上</span></a><a class="" href="#"><img src="素材/图标/ico-stove.png"><span>灶前</span></a><a class="" href="#"><img src="素材/图标/ico-banquet.png"><span>席间</span></a><a class="" href="#"><img src="素材/图标/ico-street.png"><span>街市</span></a><a class="" href="#"><img src="素材/图标/ico-mail.png"><span>来信</span></a><a class="" href="#"><img src="素材/图标/ico-menu.png"><span>册</span></a></div>
+  <div class="plaque dark" style="left:2.0%;top:12.0%;width:25.0%;height:40.0%">净洗铛</div>
+  <div class="tags"><img src="素材/alt-hang-1-cut.png"><i><b style="left:12.1%;top:40.0%">体<br>78</b><b style="left:30.8%;top:40.0%">银<br>420</b><b style="left:46.7%;top:40.0%">意<br>平</b><b style="left:69.2%;top:40.0%">才<br>63</b><b style="left:87.5%;top:40.0%">学<br>41</b></i></div>
+  <div class="dlg">
+    <div class="paper"><span class="who">子瞻</span>
+      <div class="txt">这屏只是把新风格的背景按真实摆法叠一遍，用来看光和 UI 打不打架；字与数值都是占位，不代表最终文案。</div></div>
+    <img class="por" src="素材/立绘/ex-dp45-笑.png">
+  </div>
+  <div class="hint">第一次做饭</div>
+</div>
+<div class="cap"><b>黄州 · 灶前</b> · 可写面 <code>0.02 / 0.12 / 0.25 / 0.40</code> · 匾面干净，四字标题正好占满，余量约两成</div>
+
+<div class="stage">
+  <img class="bg" src="素材/高清/fx-dan-b-3.webp">
+  <div class="nav"><a class="on" href="#"><img src="素材/图标/ico-hall.png"><span>堂上</span></a><a class="" href="#"><img src="素材/图标/ico-stove.png"><span>灶前</span></a><a class="" href="#"><img src="素材/图标/ico-banquet.png"><span>席间</span></a><a class="" href="#"><img src="素材/图标/ico-street.png"><span>街市</span></a><a class="" href="#"><img src="素材/图标/ico-mail.png"><span>来信</span></a><a class="" href="#"><img src="素材/图标/ico-menu.png"><span>册</span></a></div>
+  <div class="plaque dark" style="left:30.0%;top:12.0%;width:40.0%;height:30.0%">食槟榔</div>
+  <div class="tags"><img src="素材/alt-hang-1-cut.png"><i><b style="left:12.1%;top:40.0%">体<br>78</b><b style="left:30.8%;top:40.0%">银<br>420</b><b style="left:46.7%;top:40.0%">意<br>平</b><b style="left:69.2%;top:40.0%">才<br>63</b><b style="left:87.5%;top:40.0%">学<br>41</b></i></div>
+  <div class="dlg">
+    <div class="paper"><span class="who">子瞻</span>
+      <div class="txt">这屏只是把新风格的背景按真实摆法叠一遍，用来看光和 UI 打不打架；字与数值都是占位，不代表最终文案。</div></div>
+    <img class="por" src="素材/立绘/ex-dp45-笑.png">
+  </div>
+  <div class="hint">午后 · 街头</div>
+</div>
+<div class="cap"><b>儋州 · 黎市</b> · 可写面 <code>0.30 / 0.12 / 0.40 / 0.30</code> · 中间接近纯白，深色字压得住，但**别放浅色字**</div>
+</body></html>

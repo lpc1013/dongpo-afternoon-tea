@@ -1,0 +1,27 @@
+{
+ "ex-tang-a": {
+  "pick": "ex-tang-a-2-cut.png",
+  "out": "ex-tang-平.png",
+  "cands": 4
+ },
+ "ex-tang-b": {
+  "pick": "ex-tang-b-2-cut.png",
+  "out": "ex-tang-笑.png",
+  "cands": 4
+ },
+ "ex-tang-c": {
+  "pick": "ex-tang-c-1-cut.png",
+  "out": "ex-tang-悲.png",
+  "cands": 4
+ },
+ "ex-tang-d": {
+  "pick": "ex-tang-d-4-cut.png",
+  "out": "ex-tang-正.png",
+  "cands": 4
+ },
+ "ex-tang-e": {
+  "pick": "ex-tang-e-4-cut.png",
+  "out": "ex-tang-惊.png",
+  "cands": 3
+ }
+}
