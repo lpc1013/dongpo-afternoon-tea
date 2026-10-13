@@ -6,6 +6,10 @@
 html, body { width: 100%; height: 100%; background: #1b1a18; overflow: hidden; }
 body { font-family: "KaiTi", "楷体", "Microsoft YaHei", sans-serif; color: #2e201a; }
 
+/* 10-13 审计 A09：视口够小时由这一层负责"推着看"。
+   宽屏这一层是 inset:0 + overflow:hidden，与原先 html/body 那一圈完全等价 ——
+   1280×720 的截图几何因此一字不变；只有 scale() 判定 pan 时才把 overflow 交回它。 */
+#panwrap { position: absolute; inset: 0; overflow: hidden; }
 #scaler { position: absolute; left: 50%; top: 50%; width: 1280px; height: 720px;
   transform-origin: center center; }
 #stage { position: relative; width: 1280px; height: 720px; overflow: hidden;
@@ -38,6 +42,11 @@ body { font-family: "KaiTi", "楷体", "Microsoft YaHei", sans-serif; color: #2e
   #fx.snow i, #fx.rain i { animation-play-state: paused; }
 }
 #layer { position: absolute; inset: 0; }
+/* 10-13 审计 A10：键盘走到哪一枚要看得见。outline 不参与盒尺寸，
+   几何闸（data-clash／data-fault／框比例）量出来的数字与加这行之前一致。
+   鼠标点的那一枚不画圈（:not(:focus-visible)），键盘走的才画。 */
+#layer [data-act]:focus { outline: 2px solid #f2c66a; outline-offset: 2px; }
+#layer [data-act]:focus:not(:focus-visible) { outline: 0; }
 
 /* ── 顶部匾额：实物木匾，不是矩形条 ─────────────────
    bracket-4 是即梦产的朱漆匾（带云头耳），米色匾心实测约 x 14%~86%、y 24%~76%。 */

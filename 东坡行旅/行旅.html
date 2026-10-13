@@ -2,10 +2,14 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
+<!-- 10-13 审计 A09：这一行只解决"手机按设备宽度排版、并且允许双指放大"。
+     画面本身仍是 1280×720 那块定尺寸舞台，可读性由 行旅.js 的 scale() 兜（MIN_K）。 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>东坡行旅 · 黄州</title>
 <link rel="stylesheet" href="行旅.css">
 </head>
 <body>
+<div id="panwrap">
 <div id="scaler">
   <div id="stage">
     <div id="bg"></div>
@@ -14,9 +18,18 @@
     <div id="layer"></div>
   </div>
 </div>
+</div>
 <script src="高清清单.js"></script>
 <script src="行旅数据.js"></script>
 <script src="灶前.js"></script>
+<script src="行旅状态.js"></script>
+<script src="行旅公共件.js"></script>
+<script src="行旅声.js"></script>
+<script src="行旅今日.js"></script>
+<script src="行旅玩法.js"></script>
+<script src="行旅文书.js"></script>
+<script src="行旅尝菜.js"></script>
+<script src="行旅排版.js"></script>
 <script src="行旅.js"></script>
 </body>
 </html>
