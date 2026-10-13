@@ -48,15 +48,15 @@
        第一版都用了 ico-fire，只差一个角标颜色，玩家必按错。 */
     { k: "urge",  nm: "催",   ic: "图标/ico-fan.png", uses: 3, col: "#8c2820", trap: 1,
       fx: { hf: 20, sc: 2 }, say: "扇风催他 · 火候立刻 +20 糊 +2 —— 帖上明明说莫催他" },
-    { k: "chestnut", nm: "下栗", ic: "图标/prop-sealblank.png", uses: 1, col: "#8a5a3a", ing: 1,
+    { k: "chestnut", nm: "下栗", ic: "图标/ing-chestnut.png", uses: 1, col: "#8a5a3a", ing: 1,
       fx: { meat: 1, hf: -6 }, say: "生栗入盆 · 火候 -6（烝栗的「主料」就是它）" },
     { k: "song",    nm: "下菘", ic: "图标/ing-song.png", uses: 2, col: "#6f9a5a", ing: 1,
       fx: { hf: -5, salt: 1 }, say: "菘菜入锅 · 火候 -5" },
-    { k: "radish",  nm: "芦菔", ic: "图标/prop-slip.png", uses: 2, col: "#e0d6b8", ing: 1,
+    { k: "radish",  nm: "芦菔", ic: "图标/ing-radish.png", uses: 2, col: "#e0d6b8", ing: 1,
       fx: { hf: -4, sugar: 2 }, say: "芦菔（萝卜）· 甜 +2" },
-    { k: "turnip",  nm: "苦蔓菁", ic: "图标/prop-inkstick.png", uses: 2, col: "#8f9a7a", ing: 1,
+    { k: "turnip",  nm: "苦蔓菁", ic: "图标/ing-turnip.png", uses: 2, col: "#8f9a7a", ing: 1,
       fx: { hf: -3, sour: 2 }, say: "苦蔓菁 · 酸 +2 —— 帖里点名的就是它" },
-    { k: "taro",  nm: "煨芋", ic: "图标/prop-cushion.png", uses: 2, col: "#c9a86a", ing: 1,
+    { k: "taro",  nm: "煨芋", ic: "图标/ing-taro.png", uses: 2, col: "#c9a86a", ing: 1,
       fx: { hf: -4, body: 7 }, say: "煨芋 · 身体 +7（这一锅是唯一回身体的东西）" },
     /* 「下芋」是玉糁羹的主料：苏过"以山芋作玉糁羹"——
        煨芋是烤着吃的零嘴（回身体），下芋是下锅的料。同一根芋，两件案上事。 */

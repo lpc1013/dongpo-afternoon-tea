@@ -46,5 +46,29 @@
   "w": 208,
   "h": 163,
   "cands": 1
+ },
+ "ing-chestnut": {
+  "pick": "ing-chestnut-1-cut.png",
+  "w": 208,
+  "h": 152,
+  "cands": 1
+ },
+ "ing-radish": {
+  "pick": "ing-radish-1-cut.png",
+  "w": 208,
+  "h": 208,
+  "cands": 1
+ },
+ "ing-taro": {
+  "pick": "ing-taro-1-cut.png",
+  "w": 208,
+  "h": 189,
+  "cands": 1
+ },
+ "ing-turnip": {
+  "pick": "ing-turnip-1-cut.png",
+  "w": 167,
+  "h": 208,
+  "cands": 1
  }
 }
