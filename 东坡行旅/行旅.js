@@ -385,7 +385,13 @@ globalThis.act = act;
       for (i = 0; i < c.hand.length; i++) if (base(c.hand[i], it) > 0) ok.push(c.hand[i].id);
       for (i = 0; i < c.deck.length; i++) if (base(c.deck[i], it) > 0) deckN++;
       return { intent: it, ok: ok, deck: deckN };
-    } };
+    },
+    /* 保底那句「保证」**造出来才量得到**：自然牌序里从来没出现过
+       "四张全应不上、而牌库里还躺着一张能应的"那一格（10-13 灌缺陷证伪抓到的 ——
+       把下面那段补换整段坏掉，光量自然牌序的 30 拍照绿，等于这条闸没开）。
+       这个口**只跑引擎自己那个 drawHand**，判定一字不改；手牌与牌库由验收器摆好。
+       浏览器里玩家走的是同一条路：drawHand 是每一拍补手牌的唯一入口。 */
+    drawProbe: function () { drawHand(); return window.DP.handCheck(); } };
   // #章 / #章/界面 直接进（无头截图用）：#dingzhou、#dingzhou/court、#court
   var hh = (location.hash || "").replace(/^#/, "").split("/");
   NODLG = hh.indexOf("nodlg") >= 0;
